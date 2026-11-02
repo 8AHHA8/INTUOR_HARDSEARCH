@@ -6,13 +6,13 @@ from tkinter import filedialog
 from ui.styles import BG_APP, BG_INPUT, TEXT_PRIMARY, TEXT_SECONDARY, ACCENT, FONT_TITLE, FONT_UI, FONT_ENTRY
 
 def build_ui(app):
-    lbl_title = tk.Label(app, text="//WYSZUKIWANIE", font=FONT_TITLE, bg=BG_APP, fg=TEXT_PRIMARY)
+    lbl_title = tk.Label(app, text="//SEARCH", font=FONT_TITLE, bg=BG_APP, fg=TEXT_PRIMARY)
     lbl_title.pack(anchor="w", padx=40, pady=(30, 10))
 
     drive_frame = tk.Frame(app, bg=BG_APP)
     drive_frame.pack(fill="x", padx=40, pady=(0, 10))
     
-    tk.Label(drive_frame, text="//WYBIERZ DYSK:", font=FONT_UI, bg=BG_APP, fg=TEXT_PRIMARY).pack(side="left", padx=(0, 10))
+    tk.Label(drive_frame, text="//SELECT DRIVE:", font=FONT_UI, bg=BG_APP, fg=TEXT_PRIMARY).pack(side="left", padx=(0, 10))
 
     DRIVE_REMOTE = 4
     available_drives = []
@@ -28,7 +28,7 @@ def build_ui(app):
     
     app.drive_btns = {}
     for drive, is_network in available_drives:
-        btn_text = f"{drive} (Sieciowy)" if is_network else drive
+        btn_text = f"{drive} (Network)" if is_network else drive
         btn = tk.Button(drive_frame, text=btn_text, font=FONT_UI, bg=BG_INPUT, fg=TEXT_SECONDARY,
                         relief="flat", command=lambda d=drive: app._on_drive_clicked(d))
         btn.pack(side="left", padx=5)
@@ -37,14 +37,14 @@ def build_ui(app):
     folder_frame = tk.Frame(app, bg=BG_APP)
     folder_frame.pack(fill="x", padx=40, pady=(5, 10))
     
-    btn_folder = tk.Button(folder_frame, text="📁 WYBIERZ FOLDER", font=FONT_UI, bg=BG_INPUT, fg=TEXT_PRIMARY,
+    btn_folder = tk.Button(folder_frame, text="📁 SELECT FOLDER", font=FONT_UI, bg=BG_INPUT, fg=TEXT_PRIMARY,
                            relief="flat", command=app._on_folder_clicked)
     btn_folder.pack(side="left")
     
-    app.folder_label = tk.Label(folder_frame, text="Brak wybranego folderu", font=FONT_UI, bg=BG_APP, fg=TEXT_SECONDARY)
+    app.folder_label = tk.Label(folder_frame, text="No folder selected", font=FONT_UI, bg=BG_APP, fg=TEXT_SECONDARY)
     app.folder_label.pack(side="left", padx=15)
 
-    app.btn_clear_folder = tk.Button(folder_frame, text="✖ USUŃ FILTR FOLDERU", font=FONT_UI, bg=BG_INPUT, fg="#D32F2F",
+    app.btn_clear_folder = tk.Button(folder_frame, text="✖ REMOVE FOLDER FILTER", font=FONT_UI, bg=BG_INPUT, fg="#D32F2F",
                                       relief="flat", command=app._clear_folder_filter)
     app.btn_clear_folder.pack_forget()
 
@@ -56,11 +56,11 @@ def build_ui(app):
     app.search_entry.bind("<Return>", lambda e: app._perform_search())
     app.search_entry.bind("<KeyRelease>", app._on_search_key_release)
 
-    btn_search = tk.Button(search_frame, text="SZUKAJ", font=FONT_UI, bg=BG_INPUT, fg=TEXT_PRIMARY,
+    btn_search = tk.Button(search_frame, text="SEARCH", font=FONT_UI, bg=BG_INPUT, fg=TEXT_PRIMARY,
                            relief="flat", command=app._perform_search, width=12)
     btn_search.pack(side="right", ipady=12)
 
-    app.status_label = tk.Label(app, text="> SYSTEM GOTOWY.", font=("Consolas", 14), bg=BG_APP, fg=TEXT_PRIMARY)
+    app.status_label = tk.Label(app, text="> SYSTEM READY.", font=("Consolas", 14), bg=BG_APP, fg=TEXT_PRIMARY)
     app.status_label.pack(anchor="w", padx=40, pady=5)
 
     app.results_container = tk.Frame(app, bg=BG_APP)

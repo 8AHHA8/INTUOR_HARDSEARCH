@@ -9,12 +9,12 @@ def create_result_card(app, path, name, fragment):
     card = tk.Frame(app.scrollable_frame, bg=BG_INPUT, padx=25, pady=20)
     card.pack(fill="x", pady=8)
     
-    lbl_path_head = tk.Label(card, text="//ŚCIEŻKA:", font=FONT_HEADER, bg=BG_INPUT, fg=TEXT_PRIMARY, anchor="w")
+    lbl_path_head = tk.Label(card, text="//PATH:", font=FONT_HEADER, bg=BG_INPUT, fg=TEXT_PRIMARY, anchor="w")
     lbl_path_head.pack(fill="x")
     lbl_path = tk.Label(card, text=path, font=FONT_CARD, bg=BG_INPUT, fg=TEXT_PRIMARY, anchor="w")
     lbl_path.pack(fill="x", pady=(10, 15)) 
     
-    lbl_name_head = tk.Label(card, text="//NAZWA:", font=FONT_HEADER, bg=BG_INPUT, fg=TEXT_PRIMARY, anchor="w")
+    lbl_name_head = tk.Label(card, text="//NAME:", font=FONT_HEADER, bg=BG_INPUT, fg=TEXT_PRIMARY, anchor="w")
     lbl_name_head.pack(fill="x")
     lbl_name = tk.Label(card, text=name, font=FONT_CARD, bg=BG_INPUT, fg=TEXT_PRIMARY, anchor="w")
     lbl_name.pack(fill="x", pady=(10, 15))
@@ -23,7 +23,7 @@ def create_result_card(app, path, name, fragment):
     text_widget = None
     
     if fragment:
-        lbl_snippet_head = tk.Label(card, text="//LOKALIZACJA:", font=FONT_HEADER, bg=BG_INPUT, fg=TEXT_PRIMARY, anchor="w")
+        lbl_snippet_head = tk.Label(card, text="//LOCATION:", font=FONT_HEADER, bg=BG_INPUT, fg=TEXT_PRIMARY, anchor="w")
         lbl_snippet_head.pack(fill="x")
         
         text_widget = tk.Text(card, font=FONT_CARD, bg=BG_INPUT, fg=TEXT_PRIMARY, 
@@ -56,7 +56,7 @@ def create_result_card(app, path, name, fragment):
             subprocess.run(["explorer", "/select,", full_path])
             os.startfile(full_path)
         except Exception as e:
-            messagebox.showerror("Błąd otwierania", f"Nie można otworzyć pliku:\n{e}")
+            messagebox.showerror("Open Error", f"Cannot open file:\n{e}")
 
     card.bind("<Double-1>", open_item)
     lbl_path_head.bind("<Double-1>", open_item)

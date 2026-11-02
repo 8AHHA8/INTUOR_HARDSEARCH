@@ -23,7 +23,7 @@ class IndexWorker(threading.Thread):
                 break
                 
             if self.on_progress:
-                self.on_progress(f"Skanowanie: {p}...")
+                self.on_progress(f"Scanning: {p}...")
             
             def done_cb(i, e, t):
                 nonlocal total_indexed, total_errors, total_time
