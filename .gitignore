@@ -1,0 +1,41 @@
+# ==========================================
+# Python Byte-compiled / Cache files
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ==========================================
+# PyInstaller Build Artifacts
+# ==========================================
+# Foldery generowane podczas kompilacji .exe
+build/
+dist/
+_internal/
+
+# ==========================================
+# Database Files (Prywatne dane)
+# ==========================================
+# Baza indeksów i pliki tymczasowe SQLite
+intuor.db
+*.db-shm
+*.db-wal
+
+# ==========================================
+# Virtual Environments
+# ==========================================
+venv/
+env/
+ENV/
+
+# ==========================================
+# IDE & OS Files
+# ==========================================
+# Pliki konfiguracyjne edytorów (np. VS Code)
+.vscode/
+.idea/
+
+# Pliki systemowe Windows/Mac
+Thumbs.db
+desktop.ini
+.DS_Store
